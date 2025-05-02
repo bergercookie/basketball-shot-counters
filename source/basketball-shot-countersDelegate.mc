@@ -26,11 +26,14 @@ class basketball_shot_countersDelegate extends WatchUi.BehaviorDelegate {
     if (key == WatchUi.KEY_DOWN) {
       System.println("Counting made shot...");
       view.incrMadeShots();
-      
-
     } else if (key == WatchUi.KEY_ESC) {
       System.println("Counting missed shot...");
       view.incrMissedShots();
+    } else if (key == WatchUi.KEY_ENTER) {
+      System.println("Exiting view...");
+      view.exitView();
+    } else {
+      System.println("Unknown key: " + key);
     }
 
     return true;

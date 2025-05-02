@@ -1,21 +1,21 @@
 import Toybox.Graphics;
 import Toybox.WatchUi;
 import Toybox.Lang;
+using Toybox.FitContributor;
 
 class basketball_shot_countersView extends WatchUi.View {
   var madeShots = 0;
   var missedShots = 0;
+
   var backgroundImg = null;
 
   function incrMadeShots() as Void {
     madeShots++;
-    System.println("Made shots: " + madeShots);
     WatchUi.requestUpdate();
   }
 
   function incrMissedShots() as Void {
     missedShots++;
-    System.println("Missed shots: " + missedShots);
     WatchUi.requestUpdate();
   }
 
@@ -36,11 +36,14 @@ class basketball_shot_countersView extends WatchUi.View {
     backgroundImg = WatchUi.loadResource(Rez.Drawables.BackgroundImg);
   }
 
+  function exitView() as Void {
+    WatchUi.popView(SLIDE_DOWN);
+  }
+
   function onUpdate(dc) {
     View.onUpdate(dc); // Always call parent
 
     if (backgroundImg != null) {
-      System.println("drawing bitmap");
       dc.drawBitmap(0, 0, backgroundImg);
     }
 
